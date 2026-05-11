@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>{{question}}</h1>
+
+    <form method="POST" action="/second">
+
+    {% for i in answer %}
+        <input type="radio" name="answer" value="{{i}}"> {{i}}
+    {% endfor %}
+
+    <input type="submit" value="Ответить">
+
+    </form>
+
+</body>
+</html>
