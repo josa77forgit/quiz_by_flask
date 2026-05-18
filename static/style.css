@@ -1,0 +1,115 @@
+.header-index {
+    color: rgb(72, 18, 222);
+    font-size: 48 px;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("fonts/.ttf"
+}
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    font-family: Roboto;
+    font-weight:400;
+}
+
+.greating {
+    color: rgb(43, 40, 40);
+    text-align: center:
+    padding-top: 5%;
+}
+
+.forma {
+    padding-top: 5%;
+    text-align: center;
+}
+
+.btn_input {
+    margin-top: 5%;
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    border-width: 1px;
+    background: rgb(216, 113, 113);
+}
+
+
+.btn_input:hover {
+    background: rgb(114, 44, 44);
+    transition: 0.2s;
+}
+
+.btn_input:after {
+    margin: 1px 1px;
+    transition: 0.2s;
+}
+
+.select {
+    text_align: center;
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 0;
+}
+
+option {
+    font-size: 18px;
+}
+
+option:checked {
+    color: white;
+    background-color: #c46213;
+}
+
+option:hover {
+    color: white;
+    background-color: #c2951b;
+}
+
+.quiz-card {
+    border: 2px solid #4f46e5;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+[type="radio"] {
+    display: none;
+}
+
+[type="radio"]:checked + .quiz-card {
+    background-color: rgb(51, 44, 182);
+    color: white;
+}
+
+.quiz-card:hover {
+    background-color: #7670e6;
+}
+
+.quiz-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.form-container {
+    width: fit-content;
+}
+
+
+
+
+
+
+
+
+

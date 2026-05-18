@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <h3> Викторины </h3>
+    <h3 class="header-index">Викторины</h3>
 
     <form method="POST" action="/">
-
-    <select name="list">
-        {% for i in quiz_list %}
-            <option value={{i}}>{{i}}</option>
-        {% endfor %}
-    </select>
+    {% for i in quiz_list %}
+        <div>
+            <input type="radio" name="list" value="{{i}}">
+            <label>
+                {{i}}
+            </label>
+        </div>
+    {% endfor %}
 
     <input type="submit" value="Начать">
 
