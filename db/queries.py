@@ -1,0 +1,22 @@
+quiz_create = '''CREATE TABLE IF NOT EXISTS quizes (
+    id INTEGER PRIMARY KEY,
+    name_quiz VARCHAR)
+'''
+
+question_create = '''CREATE TABLE IF NOT EXISTS questions (
+    id INTEGER PRIMARY KEY,
+    quest VARCHAR,
+    right_ans VARCHAR,
+    wr1_ans VARCHAR,
+    wr2_ans VARCHAR,
+    wr3_ans VARCHAR)
+'''
+
+bridge_list = '''CREATE TABLE IF NOT EXISTS bridge (
+    id INTEGER PRIMARY KEY,
+    quiz_id INTEGER,
+    quest_id INTEGER,
+    
+    FOREIGN KEY (quiz_id) REFERENCES quizes (id),
+    FOREIGN KEY (quest_id) REFERENCES questions (id))
+'''
