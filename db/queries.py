@@ -20,3 +20,20 @@ bridge_list = '''CREATE TABLE IF NOT EXISTS bridge (
     FOREIGN KEY (quiz_id) REFERENCES quizes (id),
     FOREIGN KEY (quest_id) REFERENCES questions (id))
 '''
+
+quiz_names = '''
+    INSERT INTO quizes (name_quiz)
+    VALUES (?)
+'''
+
+add_quiz = '''
+    INSERT INTO questions (
+    quest, right_ans, wr1_ans, wr2_ans, wr3_ans)
+    VALUES (?, ?, ?, ?, ?)
+'''
+
+add_bridge = '''
+    INSERT INTO bridge (
+    quiz_id, quest_id)
+    VALUES (?, ?)
+'''
