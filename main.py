@@ -1,12 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from db.questions import l3, l4
+from db.db_creation import quiz_name
+from db.queries import get_quiz
+import os
 
+DATABASE = "/quiz_by_flask/test_base.db"
+SECRET_KEY = "value"
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'value'
+app.config.from_object(__name__)
+app.config.update(dict(DATABASE = os.path.join(app.root_path, 'test_base.db')))
+
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    quiz = ['1', '2']
+    names = quiz_name(get_quiz)
     if request.method == 'POST':
         res = request.form.get("list")
         print(l3.index(res))
@@ -14,7 +21,7 @@ def index():
         session['cnt'] = 0
         session['right_ans'] = []
         return redirect(url_for('test'))
-    return render_template(template_name_or_list='index.html', quiz_list=l3, title='Викторина')
+    return render_template(template_name_or_list='index.html', quiz_list=names, title='Викторина')
 
 @app.route('/second', methods=['POST', 'GET'])
 def test():

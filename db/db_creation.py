@@ -1,25 +1,34 @@
 import sqlite3
-import queries
-import questions
+import main
 
-def create_lists():
-    con = sqlite3.connect("test_baze.db")
+path = main.app.config.get('DATABASE')
+
+def create_lists(query1, query2, query3):
+    con = sqlite3.connect(path)
     cur = con.cursor()
-    cur.execute(queries.quiz_create)
-    cur.execute(queries.question_create)
-    cur.execute(queries.bridge_list)
+    cur.execute(query1)
+    cur.execute(query2)
+    cur.execute(query3)
     con.commit()
     con.close()
 
-def insert_data():
-    con = sqlite3.connect("test_baze.db")
+def insert_data(query1, query2, query3, *args):
+    con = sqlite3.connect(path)
     cur = con.cursor()
-    cur.executemany(queries.quiz_names, questions.l3)
-    cur.executemany(queries.add_quiz, questions.l)
-    cur.executemany(queries.add_quiz, questions.l2)
-    cur.executemany(queries.add_bridge, questions.l5)
+    cur.executemany(query1, args[2]) #l3
+    cur.executemany(query2, args[0]) #l
+    cur.executemany(query2, args[1]) #l2
+    cur.executemany(query3, args[4]) #l5
     con.commit()
     con.close()
 
-create_lists()
-insert_data()
+def quiz_name(query):
+    con = sqlite3.connect(path)
+    cur = con.cursor()
+    cur.execute(query)
+    data = cur.fetchall()
+    con.close()
+    return data
+
+# create_lists()
+# insert_data()

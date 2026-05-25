@@ -37,3 +37,7 @@ add_bridge = '''
     quiz_id, quest_id)
     VALUES (?, ?)
 '''
+
+get_quiz = '''
+    SELECT name_quiz FROM quizes
+'''
