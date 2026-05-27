@@ -1,31 +1,31 @@
 import sqlite3
-import main
 
-path = main.app.config.get('DATABASE')
-
-def create_lists(query1, query2, query3):
+def create_lists(query1, path):
     con = sqlite3.connect(path)
     cur = con.cursor()
     cur.execute(query1)
-    cur.execute(query2)
-    cur.execute(query3)
     con.commit()
     con.close()
 
-def insert_data(query1, query2, query3, *args):
+def insert_data(query1, data, path):
     con = sqlite3.connect(path)
     cur = con.cursor()
-    cur.executemany(query1, args[2]) #l3
-    cur.executemany(query2, args[0]) #l
-    cur.executemany(query2, args[1]) #l2
-    cur.executemany(query3, args[4]) #l5
+    cur.executemany(query1, data) #l3
     con.commit()
     con.close()
 
-def quiz_name(query):
+def quiz_name(query, path):
     con = sqlite3.connect(path)
     cur = con.cursor()
     cur.execute(query)
+    data = cur.fetchall()
+    con.close()
+    return data
+
+def quiz_info(query, vic, path):
+    con = sqlite3.connect(path)
+    cur = con.cursor()
+    cur.execute(query, vic)
     data = cur.fetchall()
     con.close()
     return data

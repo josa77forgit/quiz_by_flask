@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from db.questions import l3, l4
-from db.db_creation import quiz_name
-from db.queries import get_quiz
+from db.db_creation import quiz_name, quiz_info
+from db.queries import get_quiz, get_info
 import os
 
 DATABASE = "/quiz_by_flask/test_base.db"
@@ -9,15 +8,16 @@ SECRET_KEY = "value"
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.update(dict(DATABASE = os.path.join(app.root_path, 'test_base.db')))
-
+path = app.config.get('DATABASE')
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    names = quiz_name(get_quiz)
+    names = quiz_name(get_quiz, path)
     if request.method == 'POST':
         res = request.form.get("list")
-        print(l3.index(res))
-        session['quiz_id'] = l3.index(res)
+        information = quiz_info(get_info, res, path)
+        print(information)
+        session['quiz_id'] = res
         session['cnt'] = 0
         session['right_ans'] = []
         return redirect(url_for('test'))
@@ -53,4 +53,5 @@ def result():
     print(user_wrong)
     return render_template(template_name_or_list='result.html', ans1=user_right, ans2=user_wrong, title='Викторина')
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug = True)

@@ -11,9 +11,9 @@
     <form method="POST" action="/">
     {% for i in quiz_list %}
         <div>
-            <input type="radio" name="list" value="{{i}}">
+            <input type="radio" name="list" value="{{i[0]}}">
             <label>
-                {{i}}
+                {{i[1]}}
             </label>
         </div>
     {% endfor %}

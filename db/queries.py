@@ -39,5 +39,10 @@ add_bridge = '''
 '''
 
 get_quiz = '''
-    SELECT name_quiz FROM quizes
+    SELECT * FROM quizes
+'''
+
+get_info = '''
+    SELECT quest, right_ans, wr1_ans, wr2_ans, wr3_ans FROM questions, bridge
+    WHERE bridge.quiz_id == ? and bridge.quest_id == questions.id
 '''
