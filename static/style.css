@@ -87,7 +87,8 @@ option:hover {
     border-radius: 6px;
     color: rgb(13, 39, 166);
     background: rgb(170, 203, 242);
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     cursor: pointer;

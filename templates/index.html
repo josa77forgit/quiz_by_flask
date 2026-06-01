@@ -12,9 +12,9 @@
         <form method="POST" action="/">
         {% for i in quiz_list %}
             <div>
-                <input type="radio" name="list" value="{{i}}" id="{{quiz_list.index(i)}}">
+                <input type="radio" name="list" value="{{i[0]}}" id="{{quiz_list.index(i)}}">
                 <label for="{{quiz_list.index(i)}}" class="quiz-card select">
-                    {{i}}
+                    {{i[1]}}
                 </label>
             </div>
         {% endfor %}
