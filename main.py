@@ -1,49 +1,55 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from db.questions import l3, l4
+from new_db.db_creation import quiz_name, quiz_info
+from new_db.queries import get_quiz, get_info
+import random
+import os
 
+DATABASE = "/quiz_by_flask/test_base.db"
+SECRET_KEY = "value"
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'value'
+app.config.from_object(__name__)
+app.config.update(dict(DATABASE = os.path.join(app.root_path, 'test_base.db')))
+path = app.config.get('DATABASE')
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    quiz = ['1', '2']
+    names = quiz_name(get_quiz, path)
     if request.method == 'POST':
         res = request.form.get("list")
-        print(l3.index(res))
-        session['quiz_id'] = l3.index(res)
+        information = quiz_info(get_info, res, path)
+        session['questions'] = information
+        session['quiz_id'] = res
         session['cnt'] = 0
-        session['right_ans'] = []
+        session['user_ans'] = []
         return redirect(url_for('test'))
-    return render_template(template_name_or_list='index.html', quiz_list=l3, title='Викторина')
+    return render_template(template_name_or_list='index.html', quiz_list=names, title='Викторина')
 
 @app.route('/second', methods=['POST', 'GET'])
 def test():
     if request.method == 'POST':
         res2 = request.form.get("answer")
-        session['right_ans'].append(res2)
+        session['user_ans'].append(res2)
         session['cnt'] += 1
-    if session['cnt'] < len(l4[session['quiz_id']]):
-        ind = l4[session['quiz_id']][session['cnt']]
-        quest = ind[0]
-        answ = ind[1:]
+    if session['cnt'] < len(session['questions']):
+        current_quest = session['questions'][session['cnt']]
+        quest = current_quest[0]
+        answ = list(current_quest[1:])
+        random.shuffle(answ)
     else:
         return redirect(url_for('result'))
     return render_template(template_name_or_list='test.html', question=quest, answer=answ, title='Викторина')
 
 @app.route('/result', methods=['POST', 'GET'])
 def result():
-    print(session['right_ans'])
-    right_a = [question[1] for question in l4[session['quiz_id']]]
-    print(right_a)
+    right_a = [question[1] for question in session['questions']]
     user_right = []
     user_wrong = []
-    for i in session['right_ans']:
+    for i in session['user_ans']:
         if i in right_a:
             user_right.append(i)
         else:
             user_wrong.append(i)
-    print(user_right)
-    print(user_wrong)
     return render_template(template_name_or_list='result.html', ans1=user_right, ans2=user_wrong, title='Викторина')
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug = True)
