@@ -1,6 +1,18 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    font-family: Roboto;
+    font-weight:400;
+}
+
+
 .header-index {
-    color: rgb(72, 18, 222);
+    color: rgb(46, 8, 153);
     font-size: 48 px;
+    margin-top: 100 px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @font-face {
@@ -8,12 +20,6 @@
     src: url("fonts/.ttf")
 }
 
-* {
-    margin: 0 auto;
-    padding: 0;
-    font-family: Roboto;
-    font-weight:400;
-}
 
 .greating {
     color: rgb(43, 40, 40);
@@ -27,17 +33,21 @@
 }
 
 .btn_input {
+    display: flex;
     margin-top: 5%;
+    color: rgb(72, 18, 222);
     width: 150px;
     height: 40px;
     border-radius: 8px;
     border-width: 1px;
-    background: rgb(216, 113, 113);
+    border: 1px solid #4f46e5;
+    background: rgb(140, 209, 204);
 }
 
 
 .btn_input:hover {
-    background: rgb(114, 44, 44);
+    background: rgb(62, 8, 209);
+    color: rgb(0, 0, 0);
     transition: 0.2s;
 }
 
@@ -49,7 +59,7 @@
 .select {
     text-align: center;
     width: 300px;
-    height: 150px;
+    height: 25px;
     border-radius: 8px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -74,7 +84,9 @@ option:hover {
 .quiz-card {
     border: 2px solid #4f46e5;
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 6px;
+    color: rgb(13, 39, 166);
+    background: rgb(170, 203, 242);
     display: inline-block;
     align-items: center;
     gap: 10px;
@@ -83,6 +95,7 @@ option:hover {
 
 .size-div {
     width: fit-content;
+    margin-top: 100 px;
 }
 
 [type="radio"] {
@@ -95,15 +108,10 @@ option:hover {
 }
 
 .quiz-card:hover {
-    background-color: #7670e6;
+    color: rgb(0, 233, 250);
+    background-color: rgb(9, 15, 184);
 }
 
-.quiz-select {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
 
 .form-container {
     width: fit-content;

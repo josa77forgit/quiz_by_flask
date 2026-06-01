@@ -5,23 +5,23 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-    <h3 class="header-index">Викторины</h3>
+<body style="margin-top: 100px">
+    <h2 class="header-index">Викторины</h2>
 
     <div class="size-div">
-    <form method="POST" action="/">
-    {% for i in quiz_list %}
-        <div>
-            <input type="radio" name="list" value="{{i}}" id="{{quiz_list.index(i)}}">
-            <label for="{{quiz_list.index(i)}}" class="quiz-card">
-                {{i}}
-            </label>
-        </div>
-    {% endfor %}
+        <form method="POST" action="/">
+        {% for i in quiz_list %}
+            <div>
+                <input type="radio" name="list" value="{{i}}" id="{{quiz_list.index(i)}}">
+                <label for="{{quiz_list.index(i)}}" class="quiz-card select">
+                    {{i}}
+                </label>
+            </div>
+        {% endfor %}
 
-    <input type="submit" value="Начать">
+        <input type="submit" value="Начать" class="btn_input">
 
-    </form>
+        </form>
     </div>
 </body>
 </html>

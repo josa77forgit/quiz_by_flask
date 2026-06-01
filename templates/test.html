@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+    <h1 class="header-index">{{question}}</h1>
 
-    <h1>{{question}}</h1>
-
+    <div class="size-div">
     <form method="POST" action="/second">
 
     {% for i in answer %}
-        <input type="radio" name="answer" value="{{i}}"> {{i}}
+        <div>
+            <input type="radio" name="answer" value="{{i}}" id="{{answer.index(i)}}">
+            <label for="{{answer.index(i)}}"  class="quiz-card select">
+                {{i}}
+            </label>
+        </div>
     {% endfor %}
 
-    <input type="submit" value="Ответить">
+    <input type="submit" value="Ответить" class="btn_input">
 
     </form>
 
