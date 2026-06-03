@@ -8,12 +8,37 @@
 
 .header-index {
     color: rgb(46, 8, 153);
-    font-size: 48 px;
-    margin-top: 100 px;
+    font-size: 48px;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+.special_btn {
+    border: 2px solid #4f46e5;
+    padding: 20px;
+    border-radius: 6px;
+    color: rgb(13, 39, 166);
+    background: rgb(170, 203, 242);
+    display: flex;
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    width: 300px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.header-index2 {
+    color: rgb(46, 8, 153);
+    font-size: 30px;
+    margin-top: 100px;
+    margin-left: 680px;
+}
+
 
 @font-face {
     font-family: "Roboto";
@@ -38,6 +63,7 @@
     color: rgb(72, 18, 222);
     width: 150px;
     height: 40px;
+    font-size: 24px;
     border-radius: 8px;
     border-width: 1px;
     border: 1px solid #4f46e5;
@@ -88,6 +114,7 @@ option:hover {
     color: rgb(13, 39, 166);
     background: rgb(170, 203, 242);
     display: flex;
+    font-size: 24px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -96,7 +123,12 @@ option:hover {
 
 .size-div {
     width: fit-content;
-    margin-top: 100 px;
+    margin-top: 30px;
+}
+
+.size-div2 {
+    width: fit-content;
+    margin-top: 10px;
 }
 
 [type="radio"] {

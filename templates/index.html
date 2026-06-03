@@ -11,7 +11,7 @@
     <div class="size-div">
         <form method="POST" action="/">
         {% for i in quiz_list %}
-            <div>
+            <div class="size-div2">
                 <input type="radio" name="list" value="{{i[0]}}" id="{{quiz_list.index(i)}}">
                 <label for="{{quiz_list.index(i)}}" class="quiz-card select">
                     {{i[1]}}

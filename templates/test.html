@@ -12,7 +12,7 @@
     <form method="POST" action="/second">
 
     {% for i in answer %}
-        <div>
+        <div class="size-div2">
             <input type="radio" name="answer" value="{{i}}" id="{{answer.index(i)}}">
             <label for="{{answer.index(i)}}"  class="quiz-card select">
                 {{i}}
