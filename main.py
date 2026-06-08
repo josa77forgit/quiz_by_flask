@@ -49,7 +49,7 @@ def result():
             user_right.append(i)
         else:
             user_wrong.append(i)
-    return render_template(template_name_or_list='result.html', all_quest=session['questions'], user_ans=session['user_ans'], ans1=user_right, ans2=user_wrong, title='Викторина')
+    return render_template(template_name_or_list='result.html', all_quest=session['questions'], user_ans=session['user_ans'], right_ans=right_a, title='Викторина')
 
 if __name__ == '__main__':
     app.run(debug = True)

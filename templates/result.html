@@ -14,16 +14,24 @@
         {% for i in all_quest %}
             <div class="header-index">{{i[0]}}</div>
             <div style="margin-top: 30px;">
-                {% for c in range(4) %}
-                    {% if user_ans[c] == i[1]%}
-                        <label class="special_btn">
+                {% for j in i[1:] %}
+                    {% if j in right_ans and j in user_ans %}
+                        <label class="special_btn" style="background: rgb(62, 179, 88)">
+                            {{j}}
+                        </label>
+                    {% elif j not in right_ans and j in user_ans %}
+                        <label class="special_btn" style="background: rgb(184, 15, 15)">
+                            {{j}}
+                        </label>
                     {% else %}
-                        {{i[c+1]}}
-                    </label>
+                        <label class="special_btn">
+                            {{j}}
+                        </label>
+                    {% endif %}
                 {% endfor %}
             </div>
         {% endfor %}
-        <button><a href="/">На главную</a></button>
+        <button class="btn_input"><a href="/">На главную</a></button>
     </div>
 
 </body>
